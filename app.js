@@ -1,10 +1,14 @@
-const connectDB=require('./config/db.js');
-const {insertStudents,getSortedStudents}=require('./controller/studentController');
+const {insertStudents, getAllStudents , updatedStudent, deleteStudent} =require('./Controller/studentController');
+const connectDB=require('./config/db');
 
-const runApp=async ()=>{
+const runApp=async()=>{
   await connectDB();
   await insertStudents();
-  await getSortedStudents();
-  process.exit();
+  await getAllStudents();
+  await updatedStudent();
+  await deleteStudent();
+  await getAllStudents();
+  process.exit(); 
 };
+
 runApp();
