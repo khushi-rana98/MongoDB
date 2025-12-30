@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Document</title>
+</head>
+<body>
+  <h2>WebSocket Messaging</h2>
+  <script>
+
+    const socket=new Websocket("ws://localhost:8080");
+
+    socket.onopen=()=>{
+      console.log("COnnected to server!");
+
+      socket.send(
+        JSON.stringify({
+          type:"greeting",
+          user:"Khushi",
+          text:"Hello Server!"
+        })
+      )
+    }
+
+    socket.onmessage=(event)=>{
+      const message=JSON.parse(event.data);
+      console.log("Server says:",message.text);
+    }
+  </script>
+</body>
+</html>
